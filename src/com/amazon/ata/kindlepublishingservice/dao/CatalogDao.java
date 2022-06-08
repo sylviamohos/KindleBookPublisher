@@ -2,6 +2,9 @@ package com.amazon.ata.kindlepublishingservice.dao;
 
 import com.amazon.ata.kindlepublishingservice.dynamodb.models.CatalogItemVersion;
 import com.amazon.ata.kindlepublishingservice.exceptions.BookNotFoundException;
+import com.amazon.ata.kindlepublishingservice.models.Book;
+import com.amazon.ata.kindlepublishingservice.models.requests.RemoveBookFromCatalogRequest;
+import com.amazon.ata.kindlepublishingservice.models.response.RemoveBookFromCatalogResponse;
 import com.amazon.ata.kindlepublishingservice.publishing.KindleFormattedBook;
 import com.amazon.ata.kindlepublishingservice.utils.KindlePublishingUtils;
 
@@ -57,5 +60,13 @@ public class CatalogDao {
             return null;
         }
         return results.get(0);
+    }
+
+    // TODO: 2022-06-07 new code added for MT1 - milestone 2
+    public RemoveBookFromCatalogResponse removeBookFromCatalog(String bookId) {
+        CatalogItemVersion bookToRemove = this.getBookFromCatalog(bookId);
+        bookToRemove.setInactive(true);
+        dynamoDbMapper.save(bookToRemove);
+        return null;
     }
 }

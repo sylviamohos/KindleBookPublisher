@@ -6,6 +6,9 @@ package com.amazon.ata.kindlepublishingservice.exceptions;
 public class BookNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 7602617011482324248L;
+    public BookNotFoundException() {
+
+    }
 
     /**
      * Exception with a message, but no cause.
@@ -23,4 +26,6 @@ public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
+
+
 }
