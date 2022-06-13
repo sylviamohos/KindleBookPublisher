@@ -62,11 +62,20 @@ public class CatalogDao {
         return results.get(0);
     }
 
-    // TODO: 2022-06-07 new code added for MT1 - milestone 2
+    // TODONE: 2022-06-07 new code added for MT1 - milestone 2
     public RemoveBookFromCatalogResponse removeBookFromCatalog(String bookId) {
         CatalogItemVersion bookToRemove = this.getBookFromCatalog(bookId);
         bookToRemove.setInactive(true);
         dynamoDbMapper.save(bookToRemove);
         return null;
+    }
+
+    // TODO: 2022-06-09 new code added for S2-MT2
+    public void validateBookExists(String bookId) {
+        CatalogItemVersion bookToFind = this.getLatestVersionOfBook(bookId);
+
+        if (bookToFind == null) {
+            throw new BookNotFoundException("The provided book Id cannot be found.");
+        }
     }
 }
