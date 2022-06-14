@@ -1,7 +1,6 @@
 package com.amazon.ata.kindlepublishingservice.models;
 
 import java.util.Objects;
-
 public class PublishingStatusRecord {
     private String status;
     private String statusMessage;

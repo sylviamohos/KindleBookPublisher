@@ -70,7 +70,7 @@ public class CatalogDao {
         return null;
     }
 
-    // TODO: 2022-06-09 new code added for S2-MT2
+    // TODONE: 2022-06-09 new code added for S2-MT2
     public void validateBookExists(String bookId) {
         CatalogItemVersion bookToFind = this.getLatestVersionOfBook(bookId);
 

@@ -2,9 +2,11 @@ package com.amazon.ata.kindlepublishingservice.controllers;
 
 import com.amazon.ata.kindlepublishingservice.*;
 import com.amazon.ata.kindlepublishingservice.activity.GetBookActivity;
+import com.amazon.ata.kindlepublishingservice.activity.GetPublishingStatusActivity;
 import com.amazon.ata.kindlepublishingservice.dagger.ApplicationComponent;
 import com.amazon.ata.kindlepublishingservice.models.*;
 import com.amazon.ata.kindlepublishingservice.models.requests.GetBookRequest;
+import com.amazon.ata.kindlepublishingservice.models.requests.GetPublishingStatusRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,14 @@ public class Controller {
         GetBookRequest getBookRequest = GetBookRequest.builder().withBookId(id).build();
         return new ResponseEntity<>(bookActivity.execute(getBookRequest), HttpStatus.OK);
     }
+    @GetMapping(value = "/books/status/{id}", produces = {"application/json"})
+    public ResponseEntity<?> getPublishingStatus(@PathVariable String publishingRecordId) {
+        GetPublishingStatusActivity publishingStatusActivity = component.provideGetPublishingStatusActivity();
+        GetPublishingStatusRequest getPublishingStatusRequest = GetPublishingStatusRequest.builder()
+                .withPublishingRecordId(publishingRecordId).build();
+        return new ResponseEntity<>(publishingStatusActivity.execute(getPublishingStatusRequest), HttpStatus.OK);
+    }
+
 
     @DeleteMapping(value = "/books/{id}")
     public ResponseEntity<?> removeBook(@PathVariable String id) {
