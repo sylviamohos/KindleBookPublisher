@@ -18,13 +18,13 @@ import javax.inject.Inject;
 import java.util.List;
 
 public class GetPublishingStatusActivity {
-    // TODO: 2022-06-13 added new code:
+    // TODONE: 2022-06-13 added new code:
     private PublishingStatusDao publishingStatusDao;
     @Inject
     public GetPublishingStatusActivity(PublishingStatusDao publishingStatusDao) {
         this.publishingStatusDao = publishingStatusDao;
     }
-    // TODO: 2022-06-13 added new code:
+    // TODONE: 2022-06-13 added new code:
     public GetPublishingStatusResponse execute(GetPublishingStatusRequest publishingStatusRequest) {
         // Lets a client check on the status of their publishing request.
         // retrieve each corresponding item to the request's publishingRecordId (HASH) --> PublishingStatusItem table

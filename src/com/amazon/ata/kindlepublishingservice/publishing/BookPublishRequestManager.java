@@ -20,6 +20,16 @@ public class BookPublishRequestManager {
     }
 
     public BookPublishRequest getBookPublishRequestToProcess() {
-        return publishRequestQueue.peek();
+        // Replacing original .peek() with .remove():
+        //return publishRequestQueue.peek();
+        // TODO: 2022-06-19 - removes an item from the queue if the queue is not empty and returns it
+        //                      to BookPublishTask's run().
+        //                      If the queue is empty, BookPublishTask should return
+        //                      immediately without taking action.
+        if (publishRequestQueue.isEmpty()) {
+            return null;
+        }
+        return publishRequestQueue.remove();
     }
+
 }

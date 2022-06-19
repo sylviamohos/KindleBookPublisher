@@ -21,7 +21,7 @@ public class RemoveBookFromCatalogActivity {
     }
 
 
-    // TODO: 2022-06-07 added new code:
+    // TODONE: 2022-06-07 added new code:
     public RemoveBookFromCatalogResponse execute(RemoveBookFromCatalogRequest removeBookFromCatalogRequest) {
 
 //        if (removeBookFromCatalogRequest.getBookId() == null) {

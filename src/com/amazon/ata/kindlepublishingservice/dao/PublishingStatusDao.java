@@ -85,7 +85,7 @@ public class PublishingStatusDao {
         return item;
     }
 
-    //TODO: 2022-06-13 added new code:
+    //TODONE: 2022-06-13 added new code:
     public List<PublishingStatusItem> getPublishingStatus(String publishingRecordId) {
         // retrieve each corresponding item to the request's publishingRecordId (HASH) --> PublishingStatusItem table
         PublishingStatusItem publishingStatus = new PublishingStatusItem();
