@@ -4,15 +4,18 @@ import com.amazon.ata.kindlepublishingservice.dao.PublishingStatusDao;
 import com.amazon.ata.kindlepublishingservice.utils.KindlePublishingUtils;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
+@Singleton
 public class BookPublishRequestManager {
     private Queue<BookPublishRequest> publishRequestQueue;
 
     @Inject
     public BookPublishRequestManager() {
-        publishRequestQueue = new LinkedList<>();
+        publishRequestQueue = new ConcurrentLinkedQueue<>();
     }
 
     public void addBookPublishRequest(BookPublishRequest bookPublishRequest) {
@@ -20,16 +23,11 @@ public class BookPublishRequestManager {
     }
 
     public BookPublishRequest getBookPublishRequestToProcess() {
-        // Replacing original .peek() with .remove():
-        return publishRequestQueue.peek();
-        // TODONE: 2022-06-19 - removes an item from the queue if the queue is not empty and returns it
-        //                      to BookPublishTask's run().
-        //                      If the queue is empty, BookPublishTask should return
-        //                      immediately without taking action.
-//        if (publishRequestQueue.isEmpty()) {
-//            return null;
-//        }
-//        return publishRequestQueue.remove();
+        BookPublishRequest request = publishRequestQueue.peek();
+        if(request != null) {
+            return publishRequestQueue.remove();
+        }
+        return null;
     }
 
 }
