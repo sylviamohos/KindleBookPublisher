@@ -55,7 +55,7 @@ public class PlantUmlSequenceDiagramHelper {
     /**
      * Determines if a Plant UML sequence diagram contains a message with the specified
      * return type.
-     * TODO: Validate this is a return and not just present. Current version is more permissive
+     * TODONE: Validate this is a return and not just present. Current version is more permissive
      *       than it needs to be.
      *
      * Must use the colon notation to indicate return type (e.g. {@code Entity --> Other : ReturnType}).
@@ -67,7 +67,7 @@ public class PlantUmlSequenceDiagramHelper {
      * @return true if the return type was found on a message; false otherwise
      */
     public static boolean sequenceDiagramContainsReturnType(final String content, final String returnType) {
-        // TODO-ATAENG-3468: when it comes time to implement:
+        // TODONE-ATAENG-3468: when it comes time to implement:
         // Something like ^[^']*(<-|->)[^:]*:\s*\\b[returntype]\\b
         // If want to force dotted line arrows, change arrows to <--|-->
         return content.contains(returnType);
@@ -76,7 +76,7 @@ public class PlantUmlSequenceDiagramHelper {
     /**
      * Determines if a Plant UML sequence diagram contains a message with the specified
      * method name attached to it.
-     * TODO: Validate this is a return and not just present. Current version is more permissive
+     * TODONE: Validate this is a return and not just present. Current version is more permissive
      *       than it needs to be.
      *
      * Must use the colon notation to indicate return type (e.g. {@code Entity -> Other : ReturnType})
@@ -85,7 +85,7 @@ public class PlantUmlSequenceDiagramHelper {
      * @return true if the method name was found on a message; false otherwise
      */
     public static boolean sequenceDiagramContainsMethod(final String content, final String methodName) {
-        // TODO-ATAENG-3468: want this to match ^[^']*(<-|->)[^:]*:\s*\\b[methodname]\\b
+        // TODONE-ATAENG-3468: want this to match ^[^']*(<-|->)[^:]*:\s*\\b[methodname]\\b
         //  - not in a comment
         // probably same rule as contains return type...maybe share a method in the helper
 

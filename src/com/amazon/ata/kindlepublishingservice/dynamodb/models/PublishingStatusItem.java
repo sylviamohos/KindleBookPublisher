@@ -15,7 +15,7 @@ public class PublishingStatusItem {
     private String statusMessage;
     private String bookId;
 
-    @DynamoDBHashKey(attributeName = "publishingRecordId")
+    @DynamoDBHashKey(attributeName = "publishing")
     public String getPublishingRecordId() {
         return publishingRecordId;
     }
