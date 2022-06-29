@@ -15,11 +15,10 @@ public class PublishingStatusItem {
     private String statusMessage;
     private String bookId;
 
-    @DynamoDBHashKey(attributeName = "publishing")
+    @DynamoDBHashKey(attributeName = "publishingRecordId")
     public String getPublishingRecordId() {
         return publishingRecordId;
     }
-
     public void setPublishingRecordId(String publishingRecordId) {
         this.publishingRecordId = publishingRecordId;
     }
